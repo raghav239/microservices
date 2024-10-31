@@ -1,23 +1,23 @@
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 steps:
   # Build Docker image for App 1
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcapp1:latest', './app1']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/raghupothula/microservices/app1:latest', './app1']
 
-  # Push Docker image for App 1 to Google Container Registry
+  # Push Docker image for App 1 to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/raghupothula/app1:latest']
+    args: ['push', 'us-central1-docker.pkg.dev/raghupothula/microservices/app1:latest']
 
   # Build Docker image for App 2
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/raghupothula/app2:latest', './app2']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/raghupothula/microservices/app2:latest', './app2']
 
-  # Push Docker image for App 2 to Google Container Registry
+  # Push Docker image for App 2 to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/raghupothula/app2:latest']
+    args: ['push', 'us-central1-docker.pkg.dev/raghupothula/microservices/app2:latest']
 
 images:
-  - 'gcr.io/raghupothula/app1:latest'
-  - 'gcr.io/raghupothula/app2:latest'
-
-options:
-  logging: 'CLOUD_LOGGING_ONLY'  # Ensure all logs are captured in Cloud Logging
+  - 'us-central1-docker.pkg.dev/raghupothula/microservices/app1:latest'
+  - 'us-central1-docker.pkg.dev/raghupothula/microservices/app2:latest'
