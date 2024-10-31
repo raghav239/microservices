@@ -1,7 +1,7 @@
 steps:
   # Build Docker image for App 1
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/raghupothula/app1:latest', './app1']
+    args: ['build', '-t', 'gcapp1:latest', './app1']
 
   # Push Docker image for App 1 to Google Container Registry
   - name: 'gcr.io/cloud-builders/docker'
